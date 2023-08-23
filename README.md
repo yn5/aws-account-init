@@ -14,7 +14,7 @@ Initial infra structure for a fresh AWS account.
 ```
 
 ```bash
-aws sso login --profile <AWS-PROFILE>
+aws sso login --profile <aws-profile>
 ```
 
 ## Getting started
@@ -24,10 +24,14 @@ aws sso login --profile <AWS-PROFILE>
    npm i
    ```
 2. Deploy the stack
+
    ```bash
-   DOMAIN=<your-domain> BUDGET_NOTIFICATION_EMAILS=<comma-separated-list-of-emails> npm run deploy --profile <AWS-PROFILE>
+   DOMAIN=<your-domain> BUDGET_NOTIFICATION_EMAILS=<comma-separated-list-of-emails> npm run deploy -- --profile <aws-profile>
    ```
-3. While the stack is deploying for the first time you will have to point the DNS of your domain to the Name Servers of the Hosted Zone that is being created by this stack. This so the certificate created by ACM can be verified while deploying.
+
+   > The `DOMAIN` and `BUDGET_NOTIFICATION_EMAILS` environment variables are both optional. There presence controls wether the related stack will be deployed or not.
+
+3. If the `DOMAIN` environment is set and thus the `domains-stack` is deploying for the first time, you will have to point the DNS of your domain to the Name Servers of the Hosted Zone that is being created by this stack. This so the certificate created by ACM can be verified while deploying.
 
 # TODO
 

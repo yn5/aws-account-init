@@ -7,12 +7,12 @@ import {
 } from 'aws-cdk-lib';
 import { getRequiredEnvironmentVariable } from './utils/get-required-environment-variable';
 
-const rootDomain = getRequiredEnvironmentVariable('DOMAIN');
-const stackName = 'MainDomain';
-
 export class DomainsStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
+
+    const rootDomain = getRequiredEnvironmentVariable('DOMAIN');
+    const stackName = 'MainDomain';
 
     const hostedZone = new route53.HostedZone(this, stackName, {
       zoneName: rootDomain,
